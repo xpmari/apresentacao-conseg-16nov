@@ -1,0 +1,2291 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demandas dos CONSEGs 2026 | SSP-DF</title>
+  <style>
+    /* ==========================================================================
+       DESIGN SYSTEM & RESET - 100% OFFLINE (Sem dependências externas)
+       ========================================================================== */
+    :root {
+      --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --bg-dark-1: #070F1E;
+      --bg-dark-2: #0B172A;
+      --bg-card: rgba(16, 29, 51, 0.75);
+      --bg-card-hover: rgba(22, 40, 71, 0.9);
+      --border-color: rgba(255, 255, 255, 0.08);
+      --border-focus: rgba(0, 163, 108, 0.5);
+      
+      --navy-900: #060D1A;
+      --navy-800: #0B172A;
+      --navy-700: #13243F;
+      --navy-600: #1D3557;
+      --navy-500: #2A4A75;
+      
+      --emerald-500: #00A36C;
+      --emerald-400: #10B981;
+      --emerald-300: #34D399;
+      --emerald-glow: rgba(16, 185, 129, 0.25);
+      
+      --blue-400: #38BDF8;
+      --blue-500: #0284C7;
+      --amber-400: #FBBF24;
+      --red-400: #F87171;
+      
+      --text-main: #F8FAFC;
+      --text-muted: #94A3B8;
+      --text-dim: #64748B;
+      
+      --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.25);
+      --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.35);
+      --shadow-lg: 0 20px 35px -10px rgba(0, 0, 0, 0.5);
+      --shadow-emerald: 0 0 25px rgba(0, 163, 108, 0.25);
+      
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-full: 9999px;
+    }
+
+    /* Modo Claro Executivo */
+    body.light-mode {
+      --bg-dark-1: #F4F6F9;
+      --bg-dark-2: #E8EDF5;
+      --bg-card: rgba(255, 255, 255, 0.85);
+      --bg-card-hover: rgba(255, 255, 255, 0.98);
+      --border-color: rgba(15, 23, 42, 0.08);
+      --border-focus: rgba(0, 163, 108, 0.6);
+      
+      --text-main: #0B192C;
+      --text-muted: #475569;
+      --text-dim: #64748B;
+      
+      --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 10px 20px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 20px 30px rgba(0, 0, 0, 0.09);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      font-family: var(--font-family);
+      background: radial-gradient(circle at 50% 20%, var(--bg-dark-2) 0%, var(--bg-dark-1) 100%);
+      color: var(--text-main);
+      min-height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      user-select: none;
+      transition: background 0.4s ease, color 0.4s ease;
+    }
+
+    /* Barra de progresso no topo */
+    #progress-bar-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.05);
+      z-index: 1000;
+    }
+    #progress-bar {
+      height: 100%;
+      width: 12.5%;
+      background: linear-gradient(90deg, var(--emerald-500), var(--emerald-300));
+      box-shadow: 0 0 10px var(--emerald-400);
+      transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Container do palco de slides (16:9 proporção áurea executiva) */
+    #presentation-stage {
+      position: relative;
+      flex: 1;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 36px 72px 36px;
+    }
+
+    .slide {
+      position: absolute;
+      width: 100%;
+      max-width: 1440px;
+      height: calc(100% - 80px);
+      max-height: 840px;
+      background: var(--bg-card);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      padding: 40px 48px;
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(24px) scale(0.985);
+      transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                  visibility 0.5s;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+
+    .slide.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0) scale(1);
+      z-index: 10;
+    }
+
+    /* Cabeçalho padrão do slide */
+    .slide-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 16px;
+      flex-shrink: 0;
+    }
+
+    .slide-header-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .ssp-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0, 163, 108, 0.15);
+      border: 1px solid rgba(0, 163, 108, 0.3);
+      color: var(--emerald-300);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+    }
+    .ssp-badge::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--emerald-400);
+      box-shadow: 0 0 6px var(--emerald-400);
+    }
+
+    .slide-context {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .slide-header-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .slide-date-tag {
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      font-weight: 500;
+      background: rgba(255, 255, 255, 0.04);
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-color);
+    }
+
+    .slide-number-pill {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      background: var(--navy-700);
+      padding: 3px 10px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border-color);
+    }
+
+    /* Títulos e Tipografia */
+    .slide-titles {
+      margin-bottom: 28px;
+      flex-shrink: 0;
+    }
+
+    .slide-title {
+      font-size: 2.1rem;
+      font-weight: 750;
+      color: var(--text-main);
+      letter-spacing: -0.025em;
+      line-height: 1.15;
+      margin-bottom: 6px;
+    }
+
+    .slide-subtitle {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      font-weight: 400;
+      line-height: 1.4;
+    }
+
+    /* Efeito Cascata (Stagger) */
+    .stagger-item {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .slide.active .stagger-item {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .slide.active .stagger-item:nth-child(1) { transition-delay: 0.05s; }
+    .slide.active .stagger-item:nth-child(2) { transition-delay: 0.12s; }
+    .slide.active .stagger-item:nth-child(3) { transition-delay: 0.19s; }
+    .slide.active .stagger-item:nth-child(4) { transition-delay: 0.26s; }
+    .slide.active .stagger-item:nth-child(5) { transition-delay: 0.33s; }
+    .slide.active .stagger-item:nth-child(6) { transition-delay: 0.40s; }
+
+    /* Barra de Navegação Inferior */
+    #nav-controls {
+      position: fixed;
+      bottom: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(11, 23, 42, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-full);
+      padding: 6px 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: var(--shadow-md);
+      z-index: 100;
+    }
+
+    .nav-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      transition: all 0.2s;
+    }
+    .nav-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--text-main);
+      transform: scale(1.05);
+    }
+    .nav-btn:active {
+      transform: scale(0.95);
+    }
+
+    .nav-counter {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text-main);
+      padding: 0 8px;
+      font-variant-numeric: tabular-nums;
+      border-left: 1px solid var(--border-color);
+      border-right: 1px solid var(--border-color);
+    }
+
+    .nav-pill-extra {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .nav-badge-hint {
+      font-size: 0.72rem;
+      color: var(--text-dim);
+      background: rgba(255, 255, 255, 0.05);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+
+    /* Drawer de Notas do Apresentador */
+    #speaker-notes-drawer {
+      position: fixed;
+      bottom: 74px;
+      right: 28px;
+      width: 440px;
+      max-width: 90vw;
+      background: var(--navy-800);
+      border: 1px solid var(--emerald-500);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      box-shadow: var(--shadow-lg), var(--shadow-emerald);
+      z-index: 200;
+      transform: translateY(120%);
+      opacity: 0;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s;
+      pointer-events: none;
+    }
+    #speaker-notes-drawer.open {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .notes-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 8px;
+    }
+    .notes-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--emerald-400);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .notes-content {
+      font-size: 0.88rem;
+      color: var(--text-main);
+      line-height: 1.5;
+      max-height: 240px;
+      overflow-y: auto;
+    }
+
+    /* Modal de Ajuda de Atalhos */
+    #shortcuts-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s;
+    }
+    #shortcuts-modal.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .modal-card {
+      background: var(--navy-800);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      max-width: 500px;
+      width: 90%;
+      box-shadow: var(--shadow-lg);
+    }
+    .modal-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: var(--text-main);
+    }
+    .shortcut-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border-color);
+      font-size: 0.9rem;
+    }
+    .shortcut-key {
+      background: var(--navy-700);
+      border: 1px solid var(--border-color);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-family: monospace;
+      font-weight: 700;
+      color: var(--emerald-300);
+    }
+
+    /* ==========================================================================
+       SLIDE 1: PANORAMA DAS DEMANDAS DOS CONSEGs 2026
+       ========================================================================== */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .kpi-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 20px 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.25s, border-color 0.25s;
+    }
+    .kpi-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--border-focus);
+    }
+    .kpi-card.kpi-total {
+      background: linear-gradient(145deg, rgba(19, 36, 63, 0.9), rgba(11, 23, 42, 0.9));
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+    .kpi-card.kpi-atendidas {
+      border-left: 4px solid var(--emerald-400);
+    }
+    .kpi-card.kpi-andamento {
+      border-left: 4px solid var(--blue-400);
+    }
+    .kpi-card.kpi-naoatendidas {
+      border-left: 4px solid var(--amber-400);
+    }
+
+    .kpi-top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 6px;
+    }
+    .kpi-number {
+      font-size: 2.8rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
+    }
+    .kpi-percentage {
+      font-size: 1.15rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: var(--radius-sm);
+    }
+    .badge-emerald {
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--emerald-300);
+    }
+    .badge-blue {
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--blue-400);
+    }
+    .badge-amber {
+      background: rgba(251, 191, 36, 0.15);
+      color: var(--amber-400);
+    }
+    .kpi-label {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .slide1-columns {
+      display: grid;
+      grid-template-columns: 1fr 1.25fr;
+      gap: 24px;
+      flex: 1;
+      min-height: 0;
+    }
+    .panel-box {
+      background: rgba(11, 23, 42, 0.6);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 22px 24px;
+      display: flex;
+      flex-direction: column;
+    }
+    .panel-header {
+      margin-bottom: 16px;
+    }
+    .panel-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 4px;
+    }
+    .panel-subtitle {
+      font-size: 0.82rem;
+      color: var(--text-dim);
+    }
+
+    /* Ranking animado */
+    .ranking-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex: 1;
+      justify-content: center;
+    }
+    .ranking-row {
+      display: grid;
+      grid-template-columns: 32px 90px 1fr 48px;
+      align-items: center;
+      gap: 12px;
+    }
+    .rank-position {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-dim);
+    }
+    .rank-name {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+    .rank-bar-bg {
+      background: rgba(255, 255, 255, 0.06);
+      height: 14px;
+      border-radius: var(--radius-full);
+      overflow: hidden;
+      position: relative;
+    }
+    .rank-bar-fill {
+      height: 100%;
+      border-radius: var(--radius-full);
+      width: 0%;
+      transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .rank-val {
+      font-size: 1.05rem;
+      font-weight: 800;
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* Tabela executiva */
+    .table-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .exec-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    .exec-table th {
+      text-align: right;
+      padding: 10px 12px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .exec-table th:first-child {
+      text-align: left;
+    }
+    .exec-table td {
+      padding: 12px 12px;
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      color: var(--text-muted);
+    }
+    .exec-table td:first-child {
+      text-align: left;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+    .exec-table tr.row-total td {
+      font-weight: 800;
+      color: var(--text-main);
+      border-top: 1px solid var(--border-color);
+      border-bottom: none;
+      background: rgba(255, 255, 255, 0.02);
+    }
+    .rate-badge {
+      font-weight: 800;
+      color: var(--emerald-400);
+      background: rgba(16, 185, 129, 0.12);
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+    .panel-footer-note {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      margin-top: 12px;
+      line-height: 1.4;
+    }
+
+    /* ==========================================================================
+       SLIDE 2: FLUXO DE GOVERNANÇA (ESCUTA AO TERRITÓRIO À DEVOLUTIVA)
+       ========================================================================== */
+    .flow-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-bottom: 36px;
+      position: relative;
+    }
+    .flow-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 26px 22px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: all 0.3s;
+    }
+    .flow-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--emerald-400);
+      box-shadow: var(--shadow-md);
+    }
+    .flow-step-number {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--emerald-400);
+      line-height: 1;
+      margin-bottom: 14px;
+      opacity: 0.9;
+    }
+    .flow-step-title {
+      font-size: 1.25rem;
+      font-weight: 750;
+      color: var(--text-main);
+      margin-bottom: 12px;
+    }
+    .flow-step-desc {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .flow-metrics-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      background: rgba(11, 23, 42, 0.6);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 24px 32px;
+      align-items: center;
+    }
+    .flow-metric-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .flow-metric-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: var(--radius-md);
+      background: rgba(0, 163, 108, 0.15);
+      border: 1px solid rgba(0, 163, 108, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--emerald-300);
+      flex-shrink: 0;
+    }
+    .flow-metric-val {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--text-main);
+      line-height: 1.1;
+    }
+    .flow-metric-sub {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    /* ==========================================================================
+       SLIDE 3: O QUE OS TERRITÓRIOS DEMANDAM (EIXOS E TIPOS)
+       ========================================================================== */
+    .slide3-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.35fr;
+      gap: 32px;
+      flex: 1;
+      min-height: 0;
+    }
+    .eixos-container {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      justify-content: center;
+    }
+    .eixo-card {
+      background: rgba(11, 23, 42, 0.6);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      transition: all 0.25s;
+    }
+    .eixo-card:hover {
+      border-color: var(--border-focus);
+    }
+    .eixo-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .eixo-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+    .eixo-stats {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .eixo-count {
+      font-size: 1.1rem;
+      font-weight: 800;
+    }
+    .eixo-pct {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--emerald-300);
+      background: rgba(0, 163, 108, 0.15);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    .tipos-list {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      overflow-y: auto;
+      padding-right: 6px;
+    }
+    .tipo-row {
+      display: grid;
+      grid-template-columns: 170px 1fr 44px;
+      align-items: center;
+      gap: 12px;
+    }
+    .tipo-name {
+      font-size: 0.86rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .tipo-bar-bg {
+      background: rgba(255, 255, 255, 0.05);
+      height: 10px;
+      border-radius: var(--radius-full);
+      overflow: hidden;
+    }
+    .tipo-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--navy-500), var(--blue-400));
+      border-radius: var(--radius-full);
+      width: 0%;
+      transition: width 1s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .tipo-val {
+      font-size: 0.9rem;
+      font-weight: 750;
+      text-align: right;
+      color: var(--text-main);
+    }
+
+    /* ==========================================================================
+       SLIDE 4: TRANSIÇÃO - CASO PARADIGMA
+       ========================================================================== */
+    .transition-slide {
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: radial-gradient(circle at center, rgba(19, 36, 63, 0.9) 0%, rgba(6, 13, 26, 0.95) 100%);
+      border: 1px solid rgba(0, 163, 108, 0.3);
+      box-shadow: 0 0 50px rgba(0, 163, 108, 0.15);
+    }
+    .paradigm-tag {
+      display: inline-block;
+      font-size: 0.95rem;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--emerald-400);
+      background: rgba(0, 163, 108, 0.15);
+      border: 1px solid rgba(0, 163, 108, 0.4);
+      padding: 8px 20px;
+      border-radius: var(--radius-full);
+      margin-bottom: 24px;
+    }
+    .paradigm-main-title {
+      font-size: 4rem;
+      font-weight: 850;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      color: var(--text-main);
+      margin-bottom: 16px;
+    }
+    .paradigm-subtitle {
+      font-size: 1.6rem;
+      color: var(--text-muted);
+      font-weight: 400;
+      max-width: 750px;
+      margin: 0 auto 32px auto;
+    }
+    .paradigm-desc {
+      font-size: 1.1rem;
+      color: var(--emerald-300);
+      max-width: 650px;
+      margin: 0 auto;
+      line-height: 1.6;
+      border-top: 1px solid var(--border-color);
+      padding-top: 24px;
+    }
+
+    /* ==========================================================================
+       SLIDES 5 & 6: CASO DISTRIBUIDORAS (ESCUTA E REGISTROS CRIMINAIS)
+       ========================================================================== */
+    .case-content-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 36px;
+      align-items: center;
+      flex: 1;
+    }
+    .case-narrative {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .narrative-highlight-box {
+      background: rgba(11, 23, 42, 0.7);
+      border-left: 4px solid var(--emerald-400);
+      padding: 24px 28px;
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      font-size: 1.2rem;
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+    .case-source-pill {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .case-metric-hero {
+      background: var(--navy-800);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow-md);
+      position: relative;
+      overflow: hidden;
+    }
+    .case-metric-hero::before {
+      content: "";
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 150px;
+      height: 150px;
+      background: radial-gradient(circle, var(--emerald-glow) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .comparison-years {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+      margin-bottom: 24px;
+      width: 100%;
+    }
+    .year-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .year-label {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .year-label.y2024 { color: var(--navy-500); }
+    .year-label.y2025 { color: var(--emerald-400); }
+    
+    .year-val {
+      font-size: 4.8rem;
+      font-weight: 850;
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
+    }
+    .year-val.y2024 { color: #2A4A75; }
+    .year-val.y2025 { color: var(--emerald-400); }
+
+    .comparison-arrow {
+      font-size: 2.5rem;
+      color: var(--text-dim);
+    }
+
+    .delta-badge-large {
+      background: rgba(0, 163, 108, 0.15);
+      border: 1px solid rgba(0, 163, 108, 0.4);
+      color: var(--emerald-300);
+      font-size: 2.4rem;
+      font-weight: 850;
+      padding: 8px 24px;
+      border-radius: var(--radius-full);
+      box-shadow: var(--shadow-emerald);
+      letter-spacing: -0.02em;
+    }
+
+    /* ==========================================================================
+       SLIDE 7: GOVERNANÇA INTEGRADA (100% NATIVO EM PORTUGUÊS & INTERATIVO)
+       ========================================================================== */
+    .governance-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+      gap: 20px;
+    }
+    
+    .governance-diagram-container {
+      position: relative;
+      width: 100%;
+      max-width: 960px;
+      height: 380px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* SVG de conexões */
+    .governance-svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+    .connector-line {
+      stroke: var(--emerald-500);
+      stroke-width: 3;
+      stroke-dasharray: 6 6;
+      animation: dashFlow 20s linear infinite;
+      opacity: 0.7;
+    }
+    @keyframes dashFlow {
+      to { stroke-dashoffset: -100; }
+    }
+
+    /* Centro: Governança Integrada */
+    .gov-center-circle {
+      position: relative;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 40% 30%, #162C4E 0%, #0A1628 100%);
+      border: 3px solid var(--emerald-400);
+      box-shadow: 0 0 35px var(--emerald-glow);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+      z-index: 5;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .gov-center-circle:hover {
+      transform: scale(1.06);
+      box-shadow: 0 0 50px rgba(0, 163, 108, 0.5);
+    }
+    .gov-center-title {
+      font-size: 1.35rem;
+      font-weight: 850;
+      letter-spacing: 0.05em;
+      color: #FFFFFF;
+      line-height: 1.15;
+    }
+
+    /* 4 Pilares Interativos */
+    .pillar-card {
+      position: absolute;
+      width: 280px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 6;
+    }
+    .pillar-card:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--emerald-400);
+      box-shadow: var(--shadow-md), var(--shadow-emerald);
+      transform: translateY(-4px) scale(1.03);
+    }
+    .pillar-card.top-left {
+      top: 15px;
+      left: 10px;
+    }
+    .pillar-card.bottom-left {
+      bottom: 15px;
+      left: 10px;
+    }
+    .pillar-card.top-right {
+      top: 15px;
+      right: 10px;
+    }
+    .pillar-card.bottom-right {
+      bottom: 15px;
+      right: 10px;
+    }
+
+    .pillar-badge-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--emerald-300);
+      letter-spacing: 0.04em;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .pillar-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* Medida Resultante: Faixa de restrição */
+    .governance-result-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      background: linear-gradient(90deg, rgba(16, 29, 51, 0.9), rgba(6, 13, 26, 0.9));
+      border: 2px solid var(--emerald-400);
+      border-radius: var(--radius-full);
+      padding: 12px 36px;
+      box-shadow: var(--shadow-emerald);
+    }
+    .result-arrow-icon {
+      color: var(--emerald-400);
+      font-size: 1.4rem;
+    }
+    .result-text-label {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+    .result-hours-pill {
+      font-size: 1.6rem;
+      font-weight: 850;
+      color: #FFFFFF;
+      background: var(--emerald-500);
+      padding: 4px 18px;
+      border-radius: var(--radius-full);
+      letter-spacing: 0.05em;
+    }
+    .result-norm-tag {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      font-weight: 500;
+    }
+
+    /* ==========================================================================
+       SLIDE 8: RESULTADOS APÓS A MEDIDA (3 GRANDES MÉTRICAS & ENCERRAMENTO)
+       ========================================================================== */
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 28px;
+      flex: 1;
+    }
+    .result-impact-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 32px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      justify-content: space-between;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .result-impact-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--emerald-400);
+      box-shadow: var(--shadow-lg), var(--shadow-emerald);
+    }
+    .result-impact-card::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--emerald-400);
+    }
+
+    .impact-delta-huge {
+      font-size: 3.8rem;
+      font-weight: 900;
+      color: var(--emerald-400);
+      line-height: 1;
+      margin-bottom: 12px;
+      letter-spacing: -0.03em;
+    }
+    .impact-transition {
+      font-size: 1.35rem;
+      font-weight: 750;
+      color: var(--text-main);
+      margin-bottom: 14px;
+      font-variant-numeric: tabular-nums;
+    }
+    .impact-desc {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .closing-quote-box {
+      background: radial-gradient(circle at center, rgba(16, 185, 129, 0.12) 0%, rgba(11, 23, 42, 0.4) 100%);
+      border: 1px solid rgba(0, 163, 108, 0.3);
+      border-radius: var(--radius-md);
+      padding: 20px 32px;
+      text-align: center;
+      margin-bottom: 12px;
+    }
+    .closing-quote {
+      font-size: 1.55rem;
+      font-weight: 750;
+      color: var(--emerald-300);
+      letter-spacing: -0.01em;
+    }
+
+    /* Rodapés institucionais */
+    .slide-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      border-top: 1px solid var(--border-color);
+      padding-top: 14px;
+      margin-top: auto;
+      flex-shrink: 0;
+    }
+    .footer-source {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Responsividade */
+    @media (max-width: 1024px) {
+      .slide {
+        padding: 24px;
+      }
+      .slide-title {
+        font-size: 1.7rem;
+      }
+      .kpi-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .flow-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .slide1-columns, .slide3-grid, .case-content-grid, .results-grid {
+        grid-template-columns: 1fr;
+      }
+      .governance-diagram-container {
+        height: auto;
+      }
+      .pillar-card {
+        position: static;
+        width: 100%;
+        margin-bottom: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Barra de progresso discreta no topo -->
+  <div id="progress-bar-container">
+    <div id="progress-bar"></div>
+  </div>
+
+  <!-- PALCO PRINCIPAL DE APRESENTAÇÃO -->
+  <main id="presentation-stage">
+
+    <!-- ======================================================================
+         SLIDE 1: DEMANDAS DOS CONSEGs EM 2026 - PANORAMA GERAL
+         ====================================================================== -->
+    <section class="slide active" id="slide-1" data-slide="1">
+      <div class="slide-header">
+        <div class="slide-header-left">
+          <span class="ssp-badge">SSP-DF • SUBCONSEGS</span>
+          <span class="slide-context">Painel Analítico de Governança Comunitária</span>
+        </div>
+        <div class="slide-header-right">
+          <span class="slide-date-tag">01 JAN A 13 NOV 2026</span>
+          <span class="slide-number-pill">01 / 08</span>
+        </div>
+      </div>
+
+      <div class="slide-titles">
+        <h1 class="slide-title">Demandas dos CONSEGs em 2026</h1>
+        <p class="slide-subtitle">Panorama geral e atendimento por órgão e corporação de segurança pública</p>
+      </div>
+
+      <!-- KPIs Executivos com animação Count-up -->
+      <div class="kpi-grid">
+        <div class="kpi-card kpi-total stagger-item">
+          <div class="kpi-top-row">
+            <span class="kpi-number counter" data-target="1826">0</span>
+          </div>
+          <span class="kpi-label">Demandas registradas no DF</span>
+        </div>
+
+        <div class="kpi-card kpi-atendidas stagger-item">
+          <div class="kpi-top-row">
+            <span class="kpi-number counter" data-target="842" style="color: var(--emerald-400);">0</span>
+            <span class="kpi-percentage badge-emerald counter" data-target="46.1" data-suffix="%">0%</span>
+          </div>
+          <span class="kpi-label">Demandas atendidas (Finalizadas)</span>
+        </div>
+
+        <div class="kpi-card kpi-andamento stagger-item">
+          <div class="kpi-top-row">
+            <span class="kpi-number counter" data-target="960" style="color: var(--blue-400);">0</span>
+            <span class="kpi-percentage badge-blue counter" data-target="52.6" data-suffix="%">0%</span>
+          </div>
+          <span class="kpi-label">Em andamento (Iniciadas)</span>
+        </div>
+
+        <div class="kpi-card kpi-naoatendidas stagger-item">
+          <div class="kpi-top-row">
+            <span class="kpi-number counter" data-target="24" style="color: var(--amber-400);">0</span>
+            <span class="kpi-percentage badge-amber counter" data-target="1.3" data-suffix="%">0%</span>
+          </div>
+          <span class="kpi-label">Não atendidas (Justificadas)</span>
+        </div>
+      </div>
+
+      <!-- Grid com Ranking de Órgãos e Tabela por Corporação -->
+      <div class="slide1-columns">
+        <!-- Ranking por Órgão -->
+        <div class="panel-box stagger-item">
+          <div class="panel-header">
+            <h2 class="panel-title">Ranking de Atendimento</h2>
+            <p class="panel-subtitle">Quantidade absoluta de demandas registradas como atendidas</p>
+          </div>
+          <div class="ranking-list">
+            <div class="ranking-row">
+              <span class="rank-position">1º</span>
+              <span class="rank-name">PMDF</span>
+              <div class="rank-bar-bg">
+                <div class="rank-bar-fill" data-width="100%" style="background: var(--emerald-400);"></div>
+              </div>
+              <span class="rank-val counter" data-target="222" style="color: var(--emerald-300);">0</span>
+            </div>
+
+            <div class="ranking-row">
+              <span class="rank-position">2º</span>
+              <span class="rank-name">CEB</span>
+              <div class="rank-bar-bg">
+                <div class="rank-bar-fill" data-width="50.9%" style="background: var(--blue-400);"></div>
+              </div>
+              <span class="rank-val counter" data-target="113" style="color: var(--blue-400);">0</span>
+            </div>
+
+            <div class="ranking-row">
+              <span class="rank-position">3º</span>
+              <span class="rank-name">SLU</span>
+              <div class="rank-bar-bg">
+                <div class="rank-bar-fill" data-width="41.4%" style="background: var(--navy-500);"></div>
+              </div>
+              <span class="rank-val counter" data-target="92">0</span>
+            </div>
+
+            <div class="ranking-row">
+              <span class="rank-position">4º</span>
+              <span class="rank-name">Detran-DF</span>
+              <div class="rank-bar-bg">
+                <div class="rank-bar-fill" data-width="32.4%" style="background: var(--navy-500);"></div>
+              </div>
+              <span class="rank-val counter" data-target="72">0</span>
+            </div>
+
+            <div class="ranking-row">
+              <span class="rank-position">5º</span>
+              <span class="rank-name">DF Legal</span>
+              <div class="rank-bar-bg">
+                <div class="rank-bar-fill" data-width="20.3%" style="background: var(--navy-500);"></div>
+              </div>
+              <span class="rank-val counter" data-target="45">0</span>
+            </div>
+          </div>
+          <p class="panel-footer-note">A CEB e o SLU lideram as respostas de zeladoria urbana, enquanto a PMDF responde prontamente no policiamento ostensivo.</p>
+        </div>
+
+        <!-- Tabela por Corporação -->
+        <div class="panel-box stagger-item">
+          <div class="panel-header">
+            <h2 class="panel-title">Demandas por Corporação</h2>
+            <p class="panel-subtitle">Taxa de atendimento sobre o total de cada força de segurança</p>
+          </div>
+          <div class="table-container">
+            <table class="exec-table">
+              <thead>
+                <tr>
+                  <th>Corporação</th>
+                  <th>Total</th>
+                  <th>Atendidas</th>
+                  <th>Em andamento</th>
+                  <th>Não atendidas</th>
+                  <th>Taxa</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>PMDF</td>
+                  <td class="counter" data-target="249">0</td>
+                  <td class="counter" data-target="222" style="font-weight: 700; color: var(--emerald-400);">0</td>
+                  <td class="counter" data-target="27">0</td>
+                  <td>0</td>
+                  <td><span class="rate-badge counter" data-target="89.2" data-suffix="%">0%</span></td>
+                </tr>
+                <tr>
+                  <td>PCDF</td>
+                  <td class="counter" data-target="48">0</td>
+                  <td class="counter" data-target="30" style="font-weight: 700; color: var(--emerald-400);">0</td>
+                  <td class="counter" data-target="18">0</td>
+                  <td>0</td>
+                  <td><span class="rate-badge counter" data-target="62.5" data-suffix="%">0%</span></td>
+                </tr>
+                <tr>
+                  <td>CBMDF</td>
+                  <td class="counter" data-target="26">0</td>
+                  <td class="counter" data-target="10" style="font-weight: 700; color: var(--emerald-400);">0</td>
+                  <td class="counter" data-target="15">0</td>
+                  <td>1</td>
+                  <td><span class="rate-badge counter" data-target="38.5" data-suffix="%">0%</span></td>
+                </tr>
+                <tr class="row-total">
+                  <td>Total</td>
+                  <td class="counter" data-target="323">0</td>
+                  <td class="counter" data-target="262" style="color: var(--emerald-300);">0</td>
+                  <td class="counter" data-target="60">0</td>
+                  <td>1</td>
+                  <td><span class="rate-badge counter" data-target="81.1" data-suffix="%" style="background: var(--emerald-500); color: #fff;">0%</span></td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="panel-footer-note">As três corporações mantêm alto índice de resolutividade, consolidando a integração entre a comunidade e a segurança do DF.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <div class="footer-source">Fonte: Relatório de Demandas 2026 • Sistema Devolutivas (SSP-DF) • Extração em 13/11/2026</div>
+        <div>Uso institucional • Apresentação Executiva</div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SLIDE 2: DA ESCUTA DO TERRITÓRIO À DEVOLUTIVA
+         ====================================================================== -->
+    <section class="slide" id="slide-2" data-slide="2">
+      <div class="slide-header">
+        <div class="slide-header-left">
+          <span class="ssp-badge">SSP-DF • SUBCONSEGS</span>
+          <span class="slide-context">Ciclo de Gestão e Acompanhamento</span>
+        </div>
+        <div class="slide-header-right">
+          <span class="slide-date-tag">FLUXO INSTITUCIONAL</span>
+          <span class="slide-number-pill">02 / 08</span>
+        </div>
+      </div>
+
+      <div class="slide-titles">
+        <h1 class="slide-title">Da escuta do território à devolutiva</h1>
+        <p class="slide-subtitle">Como uma demanda da comunidade chega aos órgãos e pode ser acompanhada ponta a ponta</p>
+      </div>
+
+      <!-- Fluxo em 4 Etapas -->
+      <div class="flow-grid">
+        <div class="flow-card stagger-item">
+          <span class="flow-step-number">01</span>
+          <h2 class="flow-step-title">Comunidade</h2>
+          <p class="flow-step-desc">Moradores e lideranças comunitárias indicam o problema concreto, a localização geográfica e a recorrência temporal.</p>
+        </div>
+
+        <div class="flow-card stagger-item">
+          <span class="flow-step-number">02</span>
+          <h2 class="flow-step-title">CONSEG</h2>
+          <p class="flow-step-desc">O conselho comunitário registra o relato em ata oficial e qualifica a circunscrição e prioridade territorial.</p>
+        </div>
+
+        <div class="flow-card stagger-item">
+          <span class="flow-step-number">03</span>
+          <h2 class="flow-step-title">SUBCONSEGS</h2>
+          <p class="flow-step-desc">A Subsecretaria formaliza o encaminhamento com processo SEI ao órgão competente e monitora os prazos de resposta.</p>
+        </div>
+
+        <div class="flow-card stagger-item">
+          <span class="flow-step-number">04</span>
+          <h2 class="flow-step-title">Devolutiva</h2>
+          <p class="flow-step-desc">A comunidade acompanha a situação da demanda via sistema e recebe formalmente o retorno com a solução implantada.</p>
+        </div>
+      </div>
+
+      <!-- Indicadores de Rastreabilidade e Governança -->
+      <div class="flow-metrics-row stagger-item">
+        <div class="flow-metric-item">
+          <div class="flow-metric-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <div class="flow-metric-val"><span class="counter" data-target="38">0</span> CONSEGs Ativos</div>
+            <div class="flow-metric-sub">Registros contínuos cobrindo todas as 5 RISPs do Distrito Federal</div>
+          </div>
+        </div>
+
+        <div class="flow-metric-item">
+          <div class="flow-metric-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          </div>
+          <div>
+            <div class="flow-metric-val"><span class="counter" data-target="99.6" data-suffix="%">0%</span> com Processo SEI</div>
+            <div class="flow-metric-sub">1.819 demandas formalizadas em 996 processos administrativos únicos</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <div class="footer-source">Fonte: Panorama das Demandas dos CONSEGs em 2026, slides 2 e 4 • Dados consolidados em 13/11/2026</div>
+        <div>Rastreabilidade e Transparência Pública</div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SLIDE 3: O QUE OS TERRITÓRIOS DEMANDAM
+         ====================================================================== -->
+    <section class="slide" id="slide-3" data-slide="3">
+      <div class="slide-header">
+        <div class="slide-header-left">
+          <span class="ssp-badge">SSP-DF • SUBCONSEGS</span>
+          <span class="slide-context">Mapeamento Temático do Território</span>
+        </div>
+        <div class="slide-header-right">
+          <span class="slide-date-tag">1.826 DEMANDAS CONSOLIDADAS</span>
+          <span class="slide-number-pill">03 / 08</span>
+        </div>
+      </div>
+
+      <div class="slide-titles">
+        <h1 class="slide-title">O que os territórios demandam</h1>
+        <p class="slide-subtitle">Distribuição por eixos do Segurança Integral e ranking dos principais tipos de demanda</p>
+      </div>
+
+      <div class="slide3-grid">
+        <!-- Eixos do Segurança Integral -->
+        <div class="eixos-container stagger-item">
+          <div class="panel-header" style="margin-bottom: 8px;">
+            <h2 class="panel-title">Eixos do Segurança Integral</h2>
+            <p class="panel-subtitle">Diretrizes estratégicas da SSP-DF para atuação nos territórios</p>
+          </div>
+
+          <div class="eixo-card">
+            <div class="eixo-header">
+              <span class="eixo-title">Cidade Mais Segura</span>
+              <div class="eixo-stats">
+                <span class="eixo-count counter" data-target="1006">0</span>
+                <span class="eixo-pct">55,1%</span>
+              </div>
+            </div>
+            <div class="rank-bar-bg">
+              <div class="rank-bar-fill" data-width="55.1%" style="background: var(--blue-400);"></div>
+            </div>
+          </div>
+
+          <div class="eixo-card">
+            <div class="eixo-header">
+              <span class="eixo-title">Campo Mais Seguro</span>
+              <div class="eixo-stats">
+                <span class="eixo-count counter" data-target="651">0</span>
+                <span class="eixo-pct">35,7%</span>
+              </div>
+            </div>
+            <div class="rank-bar-bg">
+              <div class="rank-bar-fill" data-width="35.7%" style="background: var(--emerald-400);"></div>
+            </div>
+          </div>
+
+          <div class="eixo-card">
+            <div class="eixo-header">
+              <span class="eixo-title">Cidadão Mais Seguro</span>
+              <div class="eixo-stats">
+                <span class="eixo-count counter" data-target="166">0</span>
+                <span class="eixo-pct">9,1%</span>
+              </div>
+            </div>
+            <div class="rank-bar-bg">
+              <div class="rank-bar-fill" data-width="9.1%" style="background: var(--navy-500);"></div>
+            </div>
+          </div>
+
+          <div class="eixo-card">
+            <div class="eixo-header">
+              <span class="eixo-title">Escola Mais Segura</span>
+              <div class="eixo-stats">
+                <span class="eixo-count counter" data-target="3">0</span>
+                <span class="eixo-pct">0,2%</span>
+              </div>
+            </div>
+            <div class="rank-bar-bg">
+              <div class="rank-bar-fill" data-width="1%" style="background: var(--navy-500);"></div>
+            </div>
+          </div>
+
+          <div class="narrative-highlight-box" style="padding: 16px 20px; font-size: 0.95rem; margin-top: 8px;">
+            <strong>Cidade Mais Segura</strong> e <strong>Campo Mais Seguro</strong> somam <strong>90,8%</strong> das demandas registradas no Distrito Federal.
+          </div>
+        </div>
+
+        <!-- Principais Tipos de Demanda -->
+        <div class="panel-box stagger-item">
+          <div class="panel-header">
+            <h2 class="panel-title">Principais Tipos de Demanda</h2>
+            <p class="panel-subtitle">Os 10 serviços públicos mais solicitados pelas comunidades</p>
+          </div>
+
+          <div class="tipos-list">
+            <div class="tipo-row">
+              <span class="tipo-name" title="Policiamento ostensivo">Policiamento ostensivo</span>
+              <div class="tipo-bar-bg"><div class="tipo-bar-fill" data-width="100%" style="background: var(--emerald-400);"></div></div>
+              <span class="tipo-val counter" data-target="230">0</span>
+            </div>
+            <div class="tipo-row">
+              <span class="tipo-name" title="Iluminação pública">Iluminação pública</span>
+              <div class="tipo-bar-bg"><div class="tipo-bar-fill" data-width="94.8%" style="background: var(--blue-400);"></div></div>
+              <span class="tipo-val counter" data-target="218">0</span>
+            </div>
+            <div class="tipo-row">
+              <span class="tipo-name" title="Engenharia de trânsito">Engenharia de trânsito</span>
+              <div class="tipo-bar-bg"><div class="tipo-bar-fill" data-width="54.8%"></div></div>
+              <span class="tipo-val counter" data-target="126">0</span>
+            </div>
+            <div class="tipo-row">
+              <span class="tipo-name" title="Limpeza urbana">Limpeza urbana</span>
+              <div class="tipo-bar-bg"><div class="tipo-bar-fill" data-width="51.7%"></div></div>
+              <span class="tipo-val counter" data-target="119">0</span>
+            </div>
+            <div class="tipo-row">
+              <span class="tipo-name" title="Poda de árvore">Poda de árvore</span>
+              <div class="tipo-bar-bg"><div class="tipo-bar-fill" data-width="37.4%"></div></div>
+              <span class="tipo-val counter" data-target="86">0</span>
+            </div>
+            <div class="tipo-row">
+              <span class="tipo-name" title="Fiscalização de trânsito">Fiscalização de trânsito</span>
+              <div class="tipo-bar-bg"><div class="tipo-bar-fill" data-width="30.0%"></div></div>
+              <span class="tipo-val counter" data-target="69">0</span>
+            </div>
+            <div class="tipo-row">
+              <span class="tipo-name" title="Sinalização de trânsito">Sinalização de trânsito</span>
+              <div class="tipo-bar-bg"><div class="tipo-bar-fill" data-width="27.8%"></div></div>
+              <span class="tipo-val counter" data-target="64">0</span>
+            </div>
+            <div class="tipo-row">
+              <span class="tipo-name" title="Policiamento investigativo">Policiamento investigativo</span>
+              <div class="tipo-bar-bg"><div class="tipo-bar-fill" data-width="20.4%"></div></div>
+              <span class="tipo-val counter" data-target="47">0</span>
+            </div>
+            <div class="tipo-row">
+              <span class="tipo-name" title="Melhoria do asfalto">Melhoria do asfalto</span>
+              <div class="tipo-bar-bg"><div class="tipo-bar-fill" data-width="19.6%"></div></div>
+              <span class="tipo-val counter" data-target="45">0</span>
+            </div>
+            <div class="tipo-row">
+              <span class="tipo-name" title="Pavimentação asfáltica">Pavimentação asfáltica</span>
+              <div class="tipo-bar-bg"><div class="tipo-bar-fill" data-width="17.0%"></div></div>
+              <span class="tipo-val counter" data-target="39">0</span>
+            </div>
+          </div>
+          <p class="panel-footer-note" style="margin-top: 10px;">A categoria <strong>Outros</strong> reúne 592 registros (32,4% do total), contemplando desordem social, alvarás e demandas multifacetadas.</p>
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <div class="footer-source">Fonte: Panorama das Demandas dos CONSEGs em 2026, slides 8 e 9 • Base atualizada em 13/11/2026</div>
+        <div>Priorização Baseada em Dados Territoriais</div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SLIDE 4: TRANSIÇÃO - CASO PARADIGMA
+         ====================================================================== -->
+    <section class="slide transition-slide" id="slide-4" data-slide="4">
+      <div class="stagger-item">
+        <span class="paradigm-tag">Caso Paradigma</span>
+      </div>
+      <div class="stagger-item">
+        <h1 class="paradigm-main-title">Da demanda à norma</h1>
+      </div>
+      <div class="stagger-item">
+        <p class="paradigm-subtitle">Distribuidoras de bebidas no Distrito Federal</p>
+      </div>
+      <div class="stagger-item">
+        <p class="paradigm-desc">Como a escuta atenta das queixas comunitárias nos CONSEGs orientou a tomada de decisão governamental, gerando uma regulação eficaz e salvando vidas na madrugada.</p>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SLIDE 5: O QUE O TERRITÓRIO ESTAVA DIZENDO?
+         ====================================================================== -->
+    <section class="slide" id="slide-5" data-slide="5">
+      <div class="slide-header">
+        <div class="slide-header-left">
+          <span class="ssp-badge">SSP-DF • CASO PARADIGMA</span>
+          <span class="slide-context">Diagnóstico Comunitário Qualitativo</span>
+        </div>
+        <div class="slide-header-right">
+          <span class="slide-date-tag">1º TRIMESTRE (2024 vs 2025)</span>
+          <span class="slide-number-pill">05 / 08</span>
+        </div>
+      </div>
+
+      <div class="slide-titles">
+        <h1 class="slide-title">O que o território estava dizendo?</h1>
+        <p class="slide-subtitle">Demandas dos CONSEGs sobre perturbação e impacto no entorno de bares e distribuidoras</p>
+      </div>
+
+      <div class="case-content-grid">
+        <div class="case-narrative stagger-item">
+          <div class="narrative-highlight-box">
+            Os moradores e conselheiros relataram sistematicamente <strong>perturbação do sossego</strong>, <strong>aglomerações desordenadas</strong> e episódios de <strong>violência e conflito na madrugada</strong> no entorno de distribuidoras de bebidas.
+          </div>
+          <p style="font-size: 1.05rem; color: var(--text-muted); line-height: 1.6;">
+            A reincidência das manifestações em diversas Regiões Integradas de Segurança Pública (RISPs) alertou os gestores para um padrão de vulnerabilidade urbana concentrado nos horários de funcionamento noturno e matutino.
+          </p>
+          <div class="case-source-pill">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            Apresentação institucional da SSP-DF à UCCI (União de Cidades Capitais Ibero-americanas), slide 3.
+          </div>
+        </div>
+
+        <!-- Card de Métrica Hero com Count-up -->
+        <div class="case-metric-hero stagger-item">
+          <div class="comparison-years">
+            <div class="year-col">
+              <span class="year-label y2024">2024</span>
+              <span class="year-val y2024 counter" data-target="10">0</span>
+            </div>
+            <div class="comparison-arrow">→</div>
+            <div class="year-col">
+              <span class="year-label y2025">2025</span>
+              <span class="year-val y2025 counter" data-target="17">0</span>
+            </div>
+          </div>
+          <div class="delta-badge-large counter" data-target="70" data-prefix="+" data-suffix="%">+0%</div>
+          <p style="margin-top: 18px; font-size: 0.95rem; color: var(--text-muted); text-align: center;">
+            Aumento significativo de demandas comunitárias sobre bares e distribuidoras no 1º trimestre de 2025.
+          </p>
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <div class="footer-source">Fontes: Apresentação Institucional UCCI – Segurança Urbana • Portal de Notícias da SSP-DF</div>
+        <div>Evidência Comunitária em Primeiro Lugar</div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SLIDE 6: O QUE OS REGISTROS POLICIAIS MOSTRARAM
+         ====================================================================== -->
+    <section class="slide" id="slide-6" data-slide="6">
+      <div class="slide-header">
+        <div class="slide-header-left">
+          <span class="ssp-badge">SSP-DF • CASO PARADIGMA</span>
+          <span class="slide-context">Inteligência Criminal e Mancha Criminal</span>
+        </div>
+        <div class="slide-header-right">
+          <span class="slide-date-tag">1º TRIMESTRE (2024 vs 2025)</span>
+          <span class="slide-number-pill">06 / 08</span>
+        </div>
+      </div>
+
+      <div class="slide-titles">
+        <h1 class="slide-title">O que os registros policiais mostraram</h1>
+        <p class="slide-subtitle">Convergência entre as queixas dos moradores e os crimes violentos letais intencionais</p>
+      </div>
+
+      <div class="case-content-grid">
+        <div class="case-narrative stagger-item">
+          <div class="narrative-highlight-box" style="border-left-color: var(--blue-400);">
+            O cruzamento dos dados de inteligência da SSP-DF comprovou a <strong>concentração crítica de ocorrências violentas e homicídios</strong> durante a madrugada, com epicentro espacial nas imediações desses estabelecimentos.
+          </div>
+          <p style="font-size: 1.05rem; color: var(--text-muted); line-height: 1.6;">
+            A análise criminal validou o diagnóstico popular: as distribuidoras de bebidas que operavam na madrugada funcionavam como catalisadores de atritos interpessoais, porte de armas e consumo excessivo de álcool, resultando em mortes evitáveis.
+          </p>
+          <div class="case-source-pill">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Apresentação institucional da SSP-DF à UCCI, slide 4, e Análise Criminal Integrada SSP-DF.
+          </div>
+        </div>
+
+        <!-- Card de Métrica Hero com Count-up -->
+        <div class="case-metric-hero stagger-item">
+          <div class="comparison-years">
+            <div class="year-col">
+              <span class="year-label y2024">2024</span>
+              <span class="year-val y2024 counter" data-target="10">0</span>
+            </div>
+            <div class="comparison-arrow">→</div>
+            <div class="year-col">
+              <span class="year-label y2025">2025</span>
+              <span class="year-val y2025 counter" data-target="19">0</span>
+            </div>
+          </div>
+          <div class="delta-badge-large counter" data-target="90" data-prefix="+" data-suffix="%" style="background: rgba(2, 132, 199, 0.2); border-color: rgba(56, 189, 248, 0.5); color: var(--blue-400);">+0%</div>
+          <p style="margin-top: 18px; font-size: 0.95rem; color: var(--text-muted); text-align: center;">
+            Homicídios relacionados a bares e distribuidoras cresceram 90% no 1º trimestre de 2025.
+          </p>
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <div class="footer-source">Fontes: Apresentação Institucional UCCI – Segurança Urbana • Estatísticas Criminais Consolidadas SSP-DF</div>
+        <div>A Escuta Comunitária Amparada na Ciência de Dados</div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SLIDE 7: GOVERNANÇA INTEGRADA (RECRIAÇÃO 100% NATIVA EM PORTUGUÊS)
+         ====================================================================== -->
+    <section class="slide" id="slide-7" data-slide="7">
+      <div class="slide-header">
+        <div class="slide-header-left">
+          <span class="ssp-badge">SSP-DF • SUBCONSEGS</span>
+          <span class="slide-context">Modelo de Atuação Intersetorial</span>
+        </div>
+        <div class="slide-header-right">
+          <span class="slide-date-tag">PORTARIA CONJUNTA SSP/SEGOV Nº 1/2025</span>
+          <span class="slide-number-pill">07 / 08</span>
+        </div>
+      </div>
+
+      <div class="slide-titles">
+        <h1 class="slide-title">Da informação à ação</h1>
+        <p class="slide-subtitle">O modelo de Governança Integrada articulando 4 pilares fundamentais para transformar dados em resultados</p>
+      </div>
+
+      <div class="governance-wrapper stagger-item">
+        <div class="governance-diagram-container">
+          <!-- Linhas conectoras SVG em português -->
+          <svg class="governance-svg" viewBox="0 0 960 380">
+            <!-- Linhas do centro para os 4 pilares -->
+            <path d="M 290 85 L 400 150" class="connector-line" />
+            <path d="M 290 295 L 400 230" class="connector-line" />
+            <path d="M 670 85 L 560 150" class="connector-line" />
+            <path d="M 670 295 L 560 230" class="connector-line" />
+          </svg>
+
+          <!-- 4 Pilares Interativos 100% em Português -->
+          <div class="pillar-card top-left" id="pillar-regulacao">
+            <div class="pillar-badge-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              REGULAÇÃO
+            </div>
+            <p class="pillar-desc"><strong>Regras para o funcionamento:</strong> Normas claras e parâmetros objetivos para ordenar as atividades comerciais urbanas.</p>
+          </div>
+
+          <div class="pillar-card bottom-left" id="pillar-fiscalizacao">
+            <div class="pillar-badge-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+              FISCALIZAÇÃO
+            </div>
+            <p class="pillar-desc"><strong>Verificação do cumprimento:</strong> Atuação coordenada do DF Legal, PMDF e órgãos de controle urbano na rua.</p>
+          </div>
+
+          <!-- Centro: Governança Integrada -->
+          <div class="gov-center-circle">
+            <div class="gov-center-title">GOVERNANÇA<br>INTEGRADA</div>
+            <div style="font-size: 0.72rem; color: var(--emerald-300); margin-top: 6px; font-weight: 600;">ARTICULAÇÃO SSP-DF</div>
+          </div>
+
+          <div class="pillar-card top-right" id="pillar-seguranca">
+            <div class="pillar-badge-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              SEGURANÇA PÚBLICA
+            </div>
+            <p class="pillar-desc"><strong>Prevenção e presença:</strong> Patrulhamento ostensivo intensificado da PMDF e resposta rápida às desordens.</p>
+          </div>
+
+          <div class="pillar-card bottom-right" id="pillar-territorio">
+            <div class="pillar-badge-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              GESTÃO DO TERRITÓRIO
+            </div>
+            <p class="pillar-desc"><strong>Informação local:</strong> Escuta permanente dos CONSEGs para orientar decisões estratégicas e inteligentes.</p>
+          </div>
+        </div>
+
+        <!-- Faixa de Restrição e Medida Normativa -->
+        <div class="governance-result-bar">
+          <span class="result-arrow-icon">↓</span>
+          <span class="result-text-label">Faixa de restrição ao funcionamento presencial das distribuidoras:</span>
+          <span class="result-hours-pill">00h00 às 06h00</span>
+          <span class="result-norm-tag">Portaria Conjunta SSP/SEGOV nº 1/2025</span>
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <div class="footer-source">Fonte: Portaria Conjunta SSP/SEGOV nº 1/2025 • SINJ-DF • Diagrama adaptado e corrigido da apresentação à UCCI</div>
+        <div>Passe o mouse sobre os pilares para explorar a integração</div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SLIDE 8: RESULTADOS APÓS A MEDIDA
+         ====================================================================== -->
+    <section class="slide" id="slide-8" data-slide="8">
+      <div class="slide-header">
+        <div class="slide-header-left">
+          <span class="ssp-badge">SSP-DF • SUBCONSEGS</span>
+          <span class="slide-context">Impacto e Avaliação de Resultados</span>
+        </div>
+        <div class="slide-header-right">
+          <span class="slide-date-tag">AVALIAÇÃO DE 12 MESES</span>
+          <span class="slide-number-pill">08 / 08</span>
+        </div>
+      </div>
+
+      <div class="slide-titles">
+        <h1 class="slide-title">Resultados após a medida</h1>
+        <p class="slide-subtitle">Comparação dos 12 meses anteriores e posteriores à implementação da restrição de horário</p>
+      </div>
+
+      <div class="results-grid">
+        <!-- Métrica 1: -55% Homicídios Gerais -->
+        <div class="result-impact-card stagger-item">
+          <div>
+            <div class="impact-delta-huge counter" data-target="55" data-prefix="-" data-suffix="%" style="color: var(--emerald-400);">-0%</div>
+            <div class="impact-transition">De <span class="counter" data-target="72">0</span> para <span class="counter" data-target="32" style="color: var(--emerald-300);">0</span></div>
+          </div>
+          <p class="impact-desc">Homicídios tentados e consumados em distribuidoras e no entorno imediato nos 12 meses pós-medida.</p>
+        </div>
+
+        <!-- Métrica 2: -71% Madrugadas -->
+        <div class="result-impact-card stagger-item">
+          <div>
+            <div class="impact-delta-huge counter" data-target="71" data-prefix="-" data-suffix="%" style="color: var(--blue-400);">-0%</div>
+            <div class="impact-transition">De <span class="counter" data-target="31">0</span> para <span class="counter" data-target="9" style="color: var(--blue-400);">0</span></div>
+          </div>
+          <p class="impact-desc">No mesmo recorte territorial, considerando especificamente as ocorrências no horário crítico das madrugadas.</p>
+        </div>
+
+        <!-- Métrica 3: -44% Demandas Comunitárias -->
+        <div class="result-impact-card stagger-item">
+          <div>
+            <div class="impact-delta-huge counter" data-target="44" data-prefix="-" data-suffix="%" style="color: var(--emerald-300);">-0%</div>
+            <div class="impact-transition">De <span class="counter" data-target="6.3" data-decimals="1">0</span> para <span class="counter" data-target="3.5" data-decimals="1" style="color: var(--emerald-300);">0</span></div>
+          </div>
+          <p class="impact-desc">Média mensal de queixas e demandas comunitárias registradas nos CONSEGs sobre bares e distribuidoras.</p>
+        </div>
+      </div>
+
+      <!-- Frase de Encerramento Solene -->
+      <div class="closing-quote-box stagger-item">
+        <h2 class="closing-quote">“Governar o território começa por escutá-lo.”</h2>
+      </div>
+
+      <div class="slide-footer">
+        <div class="footer-source">Fonte: Monitoramento da SSP-DF (publicado em 22/04/2026) e Apresentação à UCCI, slide 6</div>
+        <div>Segurança Pública Orientada por Evidências e Participação Comunitária</div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- CONTROLES DE PALCO INFERIORES -->
+  <nav id="nav-controls" aria-label="Navegação da apresentação">
+    <button class="nav-btn" id="btn-prev" title="Slide Anterior (←)">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <span class="nav-counter" id="slide-indicator">01 / 08</span>
+    <button class="nav-btn" id="btn-next" title="Próximo Slide (→ ou Barra de Espaço)">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+    <div class="nav-pill-extra">
+      <button class="nav-btn" id="btn-fullscreen" title="Tela Cheia (F)">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+      </button>
+      <button class="nav-btn" id="btn-notes" title="Notas do Apresentador (N)">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+      </button>
+      <button class="nav-btn" id="btn-theme" title="Alternar Modo Escuro / Claro (T)">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+      <button class="nav-btn" id="btn-help" title="Atalhos do Teclado (?)">
+        <span class="nav-badge-hint">?</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- DRAWER DE NOTAS DO APRESENTADOR (SPEAKER NOTES) -->
+  <aside id="speaker-notes-drawer" aria-label="Notas do orador">
+    <div class="notes-header">
+      <div class="notes-title">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        Notas do Orador • <span id="notes-slide-num">Slide 1</span>
+      </div>
+      <button class="nav-btn" id="btn-close-notes" style="width: 24px; height: 24px;">✕</button>
+    </div>
+    <div class="notes-content" id="notes-body">
+      Carregando notas...
+    </div>
+  </aside>
+
+  <!-- MODAL DE ATALHOS -->
+  <div id="shortcuts-modal" role="dialog" aria-modal="true" aria-label="Atalhos de teclado">
+    <div class="modal-card">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <h2 class="modal-title">Atalhos de Navegação</h2>
+        <button class="nav-btn" id="btn-close-help">✕</button>
+      </div>
+      <div class="shortcut-row">
+        <span>Próximo slide</span>
+        <span><kbd class="shortcut-key">→</kbd> ou <kbd class="shortcut-key">Espaço</kbd></span>
+      </div>
+      <div class="shortcut-row">
+        <span>Slide anterior</span>
+        <span><kbd class="shortcut-key">←</kbd></span>
+      </div>
+      <div class="shortcut-row">
+        <span>Tela cheia</span>
+        <kbd class="shortcut-key">F</kbd>
+      </div>
+      <div class="shortcut-row">
+        <span>Notas do orador</span>
+        <kbd class="shortcut-key">N</kbd>
+      </div>
+      <div class="shortcut-row">
+        <span>Alternar tema (Escuro / Claro)</span>
+        <kbd class="shortcut-key">T</kbd>
+      </div>
+      <div class="shortcut-row">
+        <span>Primeiro / Último slide</span>
+        <span><kbd class="shortcut-key">Home</kbd> / <kbd class="shortcut-key">End</kbd></span>
+      </div>
+      <div class="shortcut-row" style="border: none;">
+        <span>Fechar janelas</span>
+        <kbd class="shortcut-key">Esc</kbd>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       VANILLA JAVASCRIPT - NAVEGAÇÃO, COUNT-UP, BARRAS E ANIMAÇÕES
+       ========================================================================== */
+  -->
+  <script>
+    (function () {
+      'use strict';
+
+      // 1. DADOS DAS NOTAS DO APRESENTADOR (Originais do PPTX)
+      const speakerNotes = {
+        1: "Abra com a dimensão da escuta em 2026. São 1.826 demandas registradas até 13 de novembro (evolução de 1.816 no corte anterior). Destaque a taxa de atendimento que saltou para 46,1% (842 demandas atendidas). A taxa de cada corporação divide as demandas atendidas pelo total da própria corporação. As três forças de segurança alcançam mais de 81% de resolutividade conjunta.\n\nFonte: Sistema Devolutivas, SSP-DF, extração em 13/11/2026.",
+        2: "Peça que a plateia imagine uma situação recorrente relatada por moradores. O conselho registra o relato com sua localização geográfica. A SUBCONSEGS formaliza o encaminhamento e acompanha o prazo no SEI. Das 1.826 demandas, 99,6% possuem processo SEI formalizado em 996 processos distintos. Os 38 CONSEGs com registros cobrem integralmente as cinco Regiões Integradas de Segurança Pública (RISPs).\n\nFonte: Panorama das Demandas dos CONSEGs em 2026.",
+        3: "Os eixos agrupam as 1.826 demandas. Cidade Mais Segura (1.006) e Campo Mais Seguro (651) somam 90,8% de todos os registros do DF. A coluna da direita mostra os dez tipos específicos com mais registros. Policiamento ostensivo (230) e iluminação pública (218) quase empatam. A escuta dos CONSEGs mobiliza tanto as forças de segurança quanto órgãos de trânsito, iluminação (CEB) e serviços urbanos (SLU).\n\nFonte: Panorama das Demandas dos CONSEGs em 2026.",
+        4: "A partir daqui, faça a virada da narrativa para o início de 2025. O caso das distribuidoras de bebidas mostra de maneira inequívoca como uma pauta recorrente nos CONSEGs chegou à gestão, foi analisada junto aos dados policiais de inteligência e culminou em uma política pública regulatória que salvou vidas.",
+        5: "No primeiro trimestre de 2025, as demandas sobre bares e distribuidoras passaram de 10 para 17 em relação ao primeiro trimestre de 2024 (+70%). Essa escuta chamou a atenção imediata para problemas sérios na convivência urbana e para o horário crítico em que apareciam: as madrugadas.\n\nFontes: Apresentação Institucional UCCI – Segurança Urbana, slide 3 • Portal SSP-DF.",
+        6: "A escuta comunitária apontou o problema vivido pelos moradores. O levantamento criminal deu a exata dimensão do risco e ajudou a identificar horários e locais prioritários. A série de homicídios subiu de 10 para 19 no primeiro trimestre (+90%). Havia correlação direta entre o consumo excessivo nas calçadas e as ocorrências letais.\n\nFontes: Apresentação Institucional UCCI, slide 4 • Inteligência Criminal SSP-DF.",
+        7: "Explique como a decisão chegou à rua através dos 4 pilares da Governança Integrada: Regulação, Fiscalização, Segurança Pública e Gestão do Território. A Portaria Conjunta SSP/SEGOV nº 1/2025 fixou, como parâmetro, a restrição ao funcionamento presencial das distribuidoras das 00h00 às 06h00. A SOPI coordenou a implementação com a PMDF e DF Legal na fiscalização de rua.\n\nFontes: Portaria Conjunta SSP/SEGOV nº 1/2025 • SINJ-DF.",
+        8: "A comparação dos 12 meses anteriores e posteriores à medida comprovou o estrondoso sucesso da intervenção: queda de 55% nos homicídios no entorno (de 72 para 32), queda de 71% nas madrugadas (de 31 para 9) e queda de 44% na média de queixas comunitárias. Encerre com a frase síntese: 'Governar o território começa por escutá-lo.'\n\nFontes: Monitoramento SSP-DF (publicado em 22/04/2026) e UCCI."
+      };
+
+      // 2. ELEMENTOS DO DOM
+      const slides = Array.from(document.querySelectorAll('.slide'));
+      const totalSlides = slides.length;
+      let currentSlide = 1;
+
+      const progressBar = document.getElementById('progress-bar');
+      const slideIndicator = document.getElementById('slide-indicator');
+      const btnPrev = document.getElementById('btn-prev');
+      const btnNext = document.getElementById('btn-next');
+      const btnFullscreen = document.getElementById('btn-fullscreen');
+      const btnNotes = document.getElementById('btn-notes');
+      const btnCloseNotes = document.getElementById('btn-close-notes');
+      const btnTheme = document.getElementById('btn-theme');
+      const btnHelp = document.getElementById('btn-help');
+      const btnCloseHelp = document.getElementById('btn-close-help');
+      const notesDrawer = document.getElementById('speaker-notes-drawer');
+      const notesSlideNum = document.getElementById('notes-slide-num');
+      const notesBody = document.getElementById('notes-body');
+      const shortcutsModal = document.getElementById('shortcuts-modal');
+
+      // 3. ANIMAÇÃO DE CONTADORES (COUNT-UP SUAVE E PRECISO)
+      function animateCounters(container) {
+        const counters = container.querySelectorAll('.counter');
+        counters.forEach(counter => {
+          const target = parseFloat(counter.getAttribute('data-target')) || 0;
+          const prefix = counter.getAttribute('data-prefix') || '';
+          const suffix = counter.getAttribute('data-suffix') || '';
+          const decimals = parseInt(counter.getAttribute('data-decimals'), 10) || (target % 1 !== 0 ? 1 : 0);
+          const duration = 1200; // ms
+          const startTime = performance.now();
+
+          function updateNumber(currentTime) {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            // Easing Out Cubic
+            const easeOutProgress = 1 - Math.pow(1 - progress, 3);
+            const currentVal = (target * easeOutProgress);
+
+            if (decimals > 0) {
+              counter.textContent = prefix + currentVal.toFixed(decimals).replace('.', ',') + suffix;
+            } else {
+              counter.textContent = prefix + Math.floor(currentVal).toLocaleString('pt-BR') + suffix;
+            }
+
+            if (progress < 1) {
+              requestAnimationFrame(updateNumber);
+            } else {
+              if (decimals > 0) {
+                counter.textContent = prefix + target.toFixed(decimals).replace('.', ',') + suffix;
+              } else {
+                counter.textContent = prefix + target.toLocaleString('pt-BR') + suffix;
+              }
+            }
+          }
+
+          requestAnimationFrame(updateNumber);
+        });
+      }
+
+      // 4. ANIMAÇÃO DE BARRAS DE PROGRESSO
+      function animateBars(container) {
+        const barFills = container.querySelectorAll('.rank-bar-fill, .tipo-bar-fill');
+        barFills.forEach(bar => {
+          bar.style.width = '0%';
+          const targetWidth = bar.getAttribute('data-width') || '100%';
+          setTimeout(() => {
+            bar.style.width = targetWidth;
+          }, 80);
+        });
+      }
+
+      // 5. ATUALIZAÇÃO DO SLIDE ATIVO
+      function goToSlide(slideNum) {
+        if (slideNum < 1) slideNum = 1;
+        if (slideNum > totalSlides) slideNum = totalSlides;
+
+        currentSlide = slideNum;
+
+        // Alterna classes
+        slides.forEach((s, idx) => {
+          const isActive = (idx + 1 === currentSlide);
+          s.classList.toggle('active', isActive);
+          if (isActive) {
+            // Dispara contadores e barras
+            setTimeout(() => {
+              animateCounters(s);
+              animateBars(s);
+            }, 100);
+          }
+        });
+
+        // Atualiza barra de progresso e indicador
+        const progressPct = (currentSlide / totalSlides) * 100;
+        progressBar.style.width = progressPct + '%';
+        slideIndicator.textContent = String(currentSlide).padStart(2, '0') + ' / ' + String(totalSlides).padStart(2, '0');
+
+        // Atualiza notas do orador
+        notesSlideNum.textContent = 'Slide ' + currentSlide;
+        notesBody.innerHTML = (speakerNotes[currentSlide] || 'Nenhuma nota registrada.')
+          .replace(/\n\n/g, '<br><br>')
+          .replace(/\n/g, '<br>');
+      }
+
+      function nextSlide() {
+        if (currentSlide < totalSlides) {
+          goToSlide(currentSlide + 1);
+        }
+      }
+
+      function prevSlide() {
+        if (currentSlide > 1) {
+          goToSlide(currentSlide - 1);
+        }
+      }
+
+      // 6. EVENTOS DE TECLADO (NAVEGAÇÃO DE PALCO 100% OFFLINE)
+      window.addEventListener('keydown', function (e) {
+        // Se estiver em input ou modal
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+
+        switch (e.key) {
+          case 'ArrowRight':
+          case 'ArrowDown':
+          case 'PageDown':
+          case ' ': // Barra de espaço
+            e.preventDefault();
+            nextSlide();
+            break;
+          case 'ArrowLeft':
+          case 'ArrowUp':
+          case 'PageUp':
+            e.preventDefault();
+            prevSlide();
+            break;
+          case 'Home':
+            e.preventDefault();
+            goToSlide(1);
+            break;
+          case 'End':
+            e.preventDefault();
+            goToSlide(totalSlides);
+            break;
+          case 'f':
+          case 'F':
+            e.preventDefault();
+            toggleFullscreen();
+            break;
+          case 'n':
+          case 'N':
+            e.preventDefault();
+            toggleNotes();
+            break;
+          case 't':
+          case 'T':
+            e.preventDefault();
+            toggleTheme();
+            break;
+          case '?':
+            e.preventDefault();
+            toggleShortcuts();
+            break;
+          case 'Escape':
+            closeAllModals();
+            break;
+        }
+      });
+
+      // 7. CLIQUES NOS BOTÕES
+      btnNext.addEventListener('click', nextSlide);
+      btnPrev.addEventListener('click', prevSlide);
+
+      function toggleFullscreen() {
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen().catch(() => {});
+        } else {
+          if (document.exitFullscreen) {
+            document.exitFullscreen().catch(() => {});
+          }
+        }
+      }
+      btnFullscreen.addEventListener('click', toggleFullscreen);
+
+      function toggleNotes() {
+        notesDrawer.classList.toggle('open');
+      }
+      btnNotes.addEventListener('click', toggleNotes);
+      btnCloseNotes.addEventListener('click', () => notesDrawer.classList.remove('open'));
+
+      function toggleTheme() {
+        document.body.classList.toggle('light-mode');
+      }
+      btnTheme.addEventListener('click', toggleTheme);
+
+      function toggleShortcuts() {
+        shortcutsModal.classList.toggle('open');
+      }
+      btnHelp.addEventListener('click', toggleShortcuts);
+      btnCloseHelp.addEventListener('click', () => shortcutsModal.classList.remove('open'));
+
+      function closeAllModals() {
+        shortcutsModal.classList.remove('open');
+        notesDrawer.classList.remove('open');
+      }
+
+      // Fechar modal ao clicar fora
+      shortcutsModal.addEventListener('click', (e) => {
+        if (e.target === shortcutsModal) {
+          shortcutsModal.classList.remove('open');
+        }
+      });
+
+      // 8. INTERATIVIDADE DO SLIDE 7 (DIAGRAMA DE GOVERNANÇA INTEGRADA)
+      const pillars = document.querySelectorAll('.pillar-card');
+      const centerCircle = document.querySelector('.gov-center-circle');
+      
+      pillars.forEach(pillar => {
+        pillar.addEventListener('mouseenter', () => {
+          if (centerCircle) {
+            centerCircle.style.borderColor = 'var(--emerald-300)';
+            centerCircle.style.boxShadow = '0 0 45px rgba(16, 185, 129, 0.45)';
+          }
+        });
+        pillar.addEventListener('mouseleave', () => {
+          if (centerCircle) {
+            centerCircle.style.borderColor = 'var(--emerald-400)';
+            centerCircle.style.boxShadow = '0 0 35px var(--emerald-glow)';
+          }
+        });
+      });
+
+      // 9. SUPORTE A SWIPE TOUCH EM TABLETS / TELAS TOUCH
+      let touchStartX = 0;
+      let touchEndX = 0;
+      window.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+      window.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        if (touchEndX < touchStartX - 50) nextSlide();
+        if (touchEndX > touchStartX + 50) prevSlide();
+      }, { passive: true });
+
+      // Inicialização no slide 1
+      goToSlide(1);
+
+    })();
+  </script>
+</body>
+</html>
